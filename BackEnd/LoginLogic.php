@@ -1,36 +1,33 @@
 <?php
 
 include('../../conexion.php');
-$usuario= htmlentities(addslashes($_POST['usuario']));
-$contraseña=md5(htmlentities(addslashes($_POST['contraseña'])));
+include('../BD_&_Security/tools.php');
+$usuario= htmlentities(addslashes($_POST['txtUser']));
+$contraseña=md5(htmlentities(addslashes($_POST['txtPassword'])));
 
 //Se valida la sesion del usuario
-$consulta="EXEC	[dbo].[PA_LOGIN]
-@USUARIO = N'$usuario',
-@CLAVE = N'$contraseña'";
+$consulta= "EXEC [dbo].[PA_LOGIN]
+		@DOCUMENT = N'$usuario',
+		@PASSWORD = N'$contraseña'";
 
 $resultado=sqlsrv_query($conn, $consulta);
 $filas=sqlsrv_fetch_array($resultado);
-
 if($filas){
   session_start();
   session_destroy();
-  
   session_start();
-  $_SESSION["nombre"]=$resultado[0];
-  $_SESSION["apellido"]= $resultado[1];
-  $_SESSION["documento"]= $resultado[2];
-  $_SESSION["id_tip_user"]= $resultado[3];
+  $_SESSION["nombre"]=$filas[0];
+  $_SESSION["apellido"]= $filas[1];
+  $_SESSION["documento"]= $filas[2];
+  $_SESSION["tip_user"]= $filas[3];
 
-  if ($resultado[3] == 2) {
-
-  }
-  header("Location: ../");
+  header("Location: ../FrontEnd/index.php");
 
 }else{
     ?>
     <?php
     include("../frontend/login.php");
+    
   ?>
   <h1 class="bad">CREDENCIALES INCORRECTAS</h1>
   <?php
