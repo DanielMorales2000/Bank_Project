@@ -1,3 +1,6 @@
+ <?php
+    include('../BackEnd/LoginLogic.php');
+?>
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -8,14 +11,5 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
 </head>
 <body>
-    <?php
-    session_start();
-    echo $_SESSION["nombre"];
-    echo " ";
-    echo $_SESSION["apellido"];
-    echo " ";
-    echo $_SESSION["documento"];
-    echo " ";
-    echo $_SESSION["tip_user"];
-    ?>
+   
 </body>
