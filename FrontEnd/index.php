@@ -15,7 +15,7 @@
     <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="#">
         <img src="https://www.valoraanalitik.com/wp-content/uploads/2018/03/BancodeBogota-696x461.jpg"
-         width="100" height="300" class="d-inline-block align-top" alt="">
+         width="200" height="100" class="d-inline-block align-top" alt="">
         Bootstrap
         <button type="button" class="btn btn-primary">Primary</button>
     <button type="button" class="btn btn-secondary">Secondary</button>
