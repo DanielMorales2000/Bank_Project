@@ -14,20 +14,22 @@
 <body>
     <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="#">
-        <img src="https://www.valoraanalitik.com/wp-content/uploads/2018/03/BancodeBogota-696x461.jpg"
-         width="200" height="100" class="d-inline-block align-top" alt="">
-        Bootstrap
         <button type="button" class="btn btn-primary">Primary</button>
-    <button type="button" class="btn btn-secondary">Secondary</button>
-    <button type="button" class="btn btn-success">Success</button>
-    <button type="button" class="btn btn-danger">Danger</button>
-    <button type="button" class="btn btn-warning">Warning</button>
-    <button type="button" class="btn btn-info">Info</button>
-    <button type="button" class="btn btn-light">Light</button>
-    <button type="button" class="btn btn-dark">Dark</button>
+        <button type="button" class="btn btn-secondary">Secondary</button>
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-warning">Warning</button>
+        <button type="button" class="btn btn-info">Info</button>
+        <button type="button" class="btn btn-light">Light</button>
+        <button type="button" class="btn btn-dark">Dark</button>
 
-    <button type="button" class="btn btn-link">Link</button>
+        <button type="button" class="btn btn-link">Link</button>
     </a>
     </nav>
-
+    <div align="center">
+        <H1>BIENVENIDOS AL BANCO UDEC</H1>
+        <img src="https://www.valoraanalitik.com/wp-content/uploads/2018/03/BancodeBogota-696x461.jpg"
+            width="600" height="400" class="d-inline-block align-top" alt="">
+    </div>
 </body>
+</html>
