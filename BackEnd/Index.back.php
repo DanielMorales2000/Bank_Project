@@ -12,6 +12,6 @@ if(isset($_SESSION["nombre"])){
     
 }
 else{
-    header("Location: ../FrontEnd/login.php");
+    header("Location: ../FrontEnd/login.front.php");
 }
 ?>

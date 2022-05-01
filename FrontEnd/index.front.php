@@ -1,5 +1,5 @@
  <?php
-    include('../BackEnd/LoginLogic.php');
+    include('../BackEnd/Login.back.php');
 ?>
 <!DOCTYPE html>
 <head>
@@ -12,17 +12,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">
+    <nav class="navbar navbar-light bg-light" style="width:fit-content;">
+    <a class="navbar-brand" href="../FrontEnd/CreateAccountHolder.front.php" >
+        <button type="button" class="btn btn-primary">Crear Cuentahabiente</button>
+    </a>
+    <a class="navbar-brand" href="../FrontEnd/login.php">
         <button type="button" class="btn btn-primary">Primary</button>
-        <button type="button" class="btn btn-secondary">Secondary</button>
-        <button type="button" class="btn btn-success">Success</button>
-        <button type="button" class="btn btn-danger">Danger</button>
-        <button type="button" class="btn btn-warning">Warning</button>
-        <button type="button" class="btn btn-info">Info</button>
-        <button type="button" class="btn btn-light">Light</button>
-        <button type="button" class="btn btn-dark">Dark</button>
-
+    </a>
+    <a class="navbar-brand" href="../FrontEnd/login.php">
         <button type="button" class="btn btn-link">Link</button>
     </a>
     </nav>

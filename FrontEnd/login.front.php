@@ -9,12 +9,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
 </head>
 <body background="images/13.jpg">
-   <form action="../backend/LoginLogic.php" method="post">
+   <form action="../BackEnd/Login.back.php" method="post">
         <h1 class="animate__animated animate__backInLeft">LOGIN</h1>
         <label for="txtUser"> Documento </label>
         <input type="text" placeholder="Documento de identidad" name="txtUser" minlength="8" required=true maxlength="50"></p>
         <label for="txtPassword"> Contraseña </label>
         <input type="password" placeholder="Contraseña" name="txtPassword" minlength="8" required=true maxlength="30"></p>
+        
+        <select name="txtRole">
+            <option value="1" selected>CuentaHabiente</option>
+            <option value="2">Banquero</option>
+        </select>
         <input type="submit" value="Ingresar">
    </form> 
 </body>

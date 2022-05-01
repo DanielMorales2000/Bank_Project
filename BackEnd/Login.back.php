@@ -3,7 +3,7 @@
 include('../../conexion.php');
 include('../BD_&_Security/tools.php');
 
-if(isset($_POST['txtUser']) && isset($_POST['txtPassword'])){
+if(isset($_POST['txtUser']) && isset($_POST['txtPassword']) && isset($_POST['txtRole'])){
   validateLogin($conn);
 }
 
@@ -11,11 +11,13 @@ if(isset($_POST['txtUser']) && isset($_POST['txtPassword'])){
  * Validación de Login
  */
 function validateLogin($conn){
+  $rol= htmlentities(addslashes($_POST['txtRole']));
   $usuario= htmlentities(addslashes($_POST['txtUser']));
   $contraseña=md5(htmlentities(addslashes($_POST['txtPassword'])));
 
   //Se valida la sesion del usuario
   $consulta= "EXEC [dbo].[PA_LOGIN]
+      @ROL = N'$rol',
       @DOCUMENT = N'$usuario',
       @PASSWORD = N'$contraseña'";
 
@@ -30,12 +32,12 @@ function validateLogin($conn){
     $_SESSION["documento"]= $filas[2];
     $_SESSION["tip_user"]= $filas[3];
 
-    header("Location: ../FrontEnd/index.php");
+    header("Location: ../FrontEnd/index.front.php");
 
   }else{
       ?>
       <?php
-      include("../frontend/login.php");
+      include("../FrontEnd/login.front.php");
       
     ?>
     <h1 class="bad">CREDENCIALES INCORRECTAS</h1>
