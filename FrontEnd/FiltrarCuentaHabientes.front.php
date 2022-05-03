@@ -24,16 +24,8 @@
     </a>
     </nav>
     <div align="center">
-        <H1>BIENVENIDOS AL BANCO UDEC</H1>
-        <!-- <img src="https://www.valoraanalitik.com/wp-content/uploads/2018/03/BancodeBogota-696x461.jpg" -->
-            <!-- width="600" height="400" class="d-inline-block align-top" alt=""> -->
-            <?php
-                include('../BackEnd/mainPage.back.php');
-                regularNavegacion(2);
-                if(isset($_POST['CloseSession'])){
-                    closeSession();
-                }
-            ?>
+        <H1>Filtro de CuentaHabientes</H1>
+        
     </div>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
-
 include('../../conexion.php');
 include('../BD_&_Security/tools.php');
+session_start();
 LimpiarEntradas();
 
 if(isset($_POST['name']) && 
@@ -13,19 +13,35 @@ if(isset($_POST['name']) &&
     isset($_POST['idTipeAccount']) &&
     isset($_POST['pswAccount']) 
 ){
-  CreateUser($conn);
+
+    if( (strlen($_POST['name']) < 50 && is_string($_POST['name']) )&& 
+        (strlen($_POST['lastname']) < 50 && is_string($_POST['lastname']) ) &&
+        (strlen($_POST['document']) && is_numeric($_POST['document']) ) &&
+        (strlen($_POST['email']) < 50 && is_string($_POST['email']) ) &&
+        (strlen($_POST['pswApp']) < 50 && strlen($_POST['pswApp']) > 8 && is_string($_POST['pswApp']) ) &&
+        (strlen($_POST['accountBalance']) && is_numeric($_POST['accountBalance']) ) &&
+        (strlen($_POST['idTipeAccount']) && is_numeric($_POST['idTipeAccount']) ) &&
+        (strlen($_POST['pswAccount']) < 50 && strlen($_POST['pswAccount']) > 8 && is_string($_POST['pswAccount']) )
+    ){
+        CreateUser($conn);
+    }
+    else{
+        include('../FrontEnd/CreateAccountHolder.front.php');
+        echo '<h3>La cagaste mijo</h3>';
+    }
 }
 
-function CreateUser($conn){
 
-    $name = $_POST['name'];
-    $lastname = $_POST['lastname'];
-    $document = $_POST['document'];
-    $email = $_POST['email'];
-    $pswApp = $_POST['pswApp'];
-    $accountBalance = $_POST['accountBalance'];
-    $idTipeAccount = $_POST['idTipeAccount'];
-    $pswAccount = $_POST['pswAccount'];
+
+function CreateUser($conn){
+    $name = htmlentities(addslashes($_POST['name']));
+    $lastname = htmlentities(addslashes($_POST['lastname']));
+    $document = htmlentities(addslashes($_POST['document']));
+    $email = htmlentities(addslashes($_POST['email']));
+    $pswApp = md5(htmlentities(addslashes($_POST['pswApp'])));
+    $accountBalance = htmlentities(addslashes($_POST['accountBalance']));
+    $idTipeAccount = htmlentities(addslashes($_POST['idTipeAccount']));
+    $pswAccount = md5(htmlentities(addslashes($_POST['pswAccount'])));
 
     $insertar = "EXECUTE [dbo].[CREAR_CUENTAHABIENTES]
                 @NOMBRES = N'$name',

@@ -1,4 +1,21 @@
-<?php 
+<?php
+    /**
+     * Redireccionar: Redirecciona al usuario a la página principal segun su rol
+     */
+    
+    function regularNavegacion($id){
+        if(isset($_SESSION["tip_user"]) && $_SESSION["tip_user"] != null){
+            if($_SESSION["tip_user"] != $id){
+                echo $_SESSION["tip_user"];
+                echo " ".$id;
+                header("Location: ../FrontEnd/index.front.php");
+            }
+        }
+        else if($_SESSION["tip_user"] == null){
+            header("Location: ../FrontEnd/index.front.php");
+        }
+    }
+
     /**
      * Limpieza de entradas de formularios en todo el sistema
      */
@@ -10,7 +27,7 @@
         }
     }
     function LimpiarCadena($cadena){
-        $patron = array('/<script>.*<\/script>/');
+        $patron = array('/<script>/','/<\/script>/','/</','/>/','/"/','/\'/');
         $cadena = preg_replace($patron,'',$cadena);
         $cadena = htmlspecialchars($cadena);
         return $cadena;
@@ -50,4 +67,23 @@
         session_start();
         session_regenerate_id(true);
     }
+
+    /**
+     * 
+     */
+
+    function closeSession(){
+        $_SESSION = array();
+        if (ini_get("session.use_cookies")) {
+
+            $params = session_get_cookie_params();
+                setcookie(session_name(), '', time() - 42000,
+                    $params["path"], $params["domain"],
+                    $params["secure"], $params["httponly"]
+                );
+        }
+        // Finalmente, destruir la sesión.
+        session_destroy();
+        header('Location:index.front.php');
+     }
 ?>

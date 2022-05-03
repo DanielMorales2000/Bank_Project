@@ -1,3 +1,13 @@
+<?php 
+include('../BD_&_Security/tools.php');
+session_start();
+regularNavegacion(2);
+if(isset($_POST['CloseSession'])){
+   closeSession();
+}
+
+?>
+
 <!DOCTYPE html>
 <head>
    <title>login</title> 

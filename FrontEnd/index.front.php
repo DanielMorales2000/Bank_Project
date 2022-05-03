@@ -1,3 +1,11 @@
+<?php
+    include('../BackEnd/index.back.php');
+    include('../../conexion.php');
+    LimpiarEntradas();
+    if(isset($_POST['txtUser']) && isset($_POST['txtPassword']) && isset($_POST['txtRole'])){
+        validateLogin($conn);
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
 </head>
 <body background="images/13.jpg">
-   <form action="../BackEnd/Login.back.php" method="post">
+   <form method="post">
         <h1 class="animate__animated animate__backInLeft">LOGIN</h1>
         <label for="txtUser"> Documento </label>
         <input type="text" placeholder="Documento de identidad" name="txtUser" minlength="8" required=true maxlength="50"></p>
@@ -24,5 +32,3 @@
    </form> 
 </body>
 </html>
-
-<php? 

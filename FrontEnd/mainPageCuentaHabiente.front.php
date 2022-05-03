@@ -1,6 +1,9 @@
  <?php
-    include('../BackEnd/Login.back.php');
-    session_start();
+    include('../BackEnd/mainPage.back.php');
+    regularNavegacion(1);
+    if(isset($_POST['CloseSession'])){
+        closeSession();
+    }
     
 ?>
 <!DOCTYPE html>
@@ -21,8 +24,10 @@
     <a class="navbar-brand" href="../FrontEnd/login.php">
         <button type="button" class="btn btn-primary">Primary</button>
     </a>
-    <a class="navbar-brand" href="../FrontEnd/login.php">
-        <button type="button" class="btn btn-link">Link</button>
+    <a class="navbar-brand">
+        <form method="POST">
+            <button type="submit" class="btn btn-link" name="CloseSession">Cerrar Sesión</button>
+        </form>
     </a>
     </nav>
     <div align="center">
