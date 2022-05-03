@@ -21,6 +21,9 @@
 </head>
 <body>
     <nav class="navbar navbar-light bg-light" style="width:fit-content;">
+    <a class="navbar-brand" href="../FrontEnd/mainPageBanquero.front.php">
+        <button type="button" class="btn btn-primary">Pagina Principal</button>
+    </a>
     <a class="navbar-brand" href="../FrontEnd/CreateAccountHolder.front.php" >
         <button type="button" class="btn btn-primary">Crear CuentaHabiente</button>
     </a>
@@ -34,9 +37,8 @@
     </a>
     </nav>
     <div align="center">
-        <H1>Filtro de CuentaHabientes</H1>
         <form method="post">
-            <h1 class="animate__animated animate__backInLeft">LOGIN</h1>
+            <h1 class="animate__animated animate__backInLeft">Filtro de CuentaHabientes</h1>
             <label for="txtName"> Nombre </label>
             <input type="text" placeholder="Nombre" name="txtName" maxlength="30"></p>
             <label for="txtLastName"> Apellido </label>

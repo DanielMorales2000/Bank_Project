@@ -27,7 +27,6 @@ if(isset($_POST['name']) &&
     }
     else{
         echo '<h3>Los datos no cumplen con las caracterísiticas de seguridad</h3>';
-        echo "<script> alert('pornoooo'); </script>";
         header("Location: ../FrontEnd/CreateAccountHolder.front.php");
     }
 }
@@ -60,8 +59,6 @@ function CreateUser($conn){
     if($ejecutar){
         
         echo '<h3>Insertado correctamente</h3>';
-        echo "<script> alert('pornoooo'); </script>";
-        sleep(5);
         header("Location: ../FrontEnd/CreateAccountHolder.front.php");
     }
     else
