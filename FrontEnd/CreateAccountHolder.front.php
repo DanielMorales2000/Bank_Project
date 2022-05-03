@@ -1,6 +1,5 @@
 <?php 
-include('../BD_&_Security/tools.php');
-session_start();
+include('../BackEnd/CreateAccountHolder.back.php');
 regularNavegacion(2);
 if(isset($_POST['CloseSession'])){
    closeSession();

@@ -26,8 +26,9 @@ if(isset($_POST['name']) &&
         CreateUser($conn);
     }
     else{
-        include('../FrontEnd/CreateAccountHolder.front.php');
-        echo '<h3>La cagaste mijo</h3>';
+        echo '<h3>Los datos no cumplen con las caracterísiticas de seguridad</h3>';
+        echo "<script> alert('pornoooo'); </script>";
+        header("Location: ../FrontEnd/CreateAccountHolder.front.php");
     }
 }
 
@@ -51,12 +52,17 @@ function CreateUser($conn){
                 @CORREO = N'$email',
                 @ID_TIP_CUENTA = N'$idTipeAccount',
                 @SALDO = N'$accountBalance',
-                @CLAVECUENTA = N'$pswAccount'"; 
+                @CLAVECUENTA = N'$pswAccount',
+                @ID_SUCURSAL = N'$_SESSION[id_sucursal]'"; 
     
     $ejecutar = sqlsrv_query($conn, $insertar);
 
     if($ejecutar){
+        
         echo '<h3>Insertado correctamente</h3>';
+        echo "<script> alert('pornoooo'); </script>";
+        sleep(5);
+        header("Location: ../FrontEnd/CreateAccountHolder.front.php");
     }
     else
     {

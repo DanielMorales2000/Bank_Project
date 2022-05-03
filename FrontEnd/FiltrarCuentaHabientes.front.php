@@ -1,4 +1,14 @@
- 
+ <?php 
+ include('../BD_&_Security/tools.php');
+ session_start();
+ LimpiarEntradas();        
+ regularNavegacion(2);
+
+ $name = "";
+ $lastname = "";
+ $document = "";
+ $email = "";
+ ?>
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -25,7 +35,40 @@
     </nav>
     <div align="center">
         <H1>Filtro de CuentaHabientes</H1>
-        
+        <form method="post">
+            <h1 class="animate__animated animate__backInLeft">LOGIN</h1>
+            <label for="txtName"> Nombre </label>
+            <input type="text" placeholder="Nombre" name="txtName" maxlength="30"></p>
+            <label for="txtLastName"> Apellido </label>
+            <input type="text" placeholder="Apellido" name="txtLastName" maxlength="30"></p>
+            <label for="txtDocument"> Documento </label>
+            <input type="text" placeholder="Documento" name="txtDocument" maxlength="30"></p>
+            <label for="txtEmail"> Correo </label>
+            <input type="text" placeholder="Correo" name="txtEmail" maxlength="30"></p>
+            <input type="submit" value="Ingresar" name="ingresar">
+        </form>
+        <?php
+            include('../BackEnd/FiltrarCuentaHabientes.back.php');
+            if(isset($_POST['ingresar'])
+            ){
+                if(isset($_POST['name'])){
+                    $name = $_POST['name'];
+                }
+                if(isset($_POST['lastname'])){
+                    $lastname = $_POST['lastname'];
+                }
+                if(isset($_POST['document'])){
+                    $document = $_POST['document'];
+                }
+                if(isset($_POST['email'])){
+                    $email = $_POST['email'];
+                }
+                validateDataFilter($conn, $name, $lastname, $document, $email);
+            }
+            if(isset($_POST['CloseSession'])){
+                closeSession();
+            }
+        ?>
     </div>
 </body>
 </html>

@@ -19,6 +19,7 @@ $consulta= "EXEC [dbo].[PA_BANCO]
     echo "<b>SEDE:  </b>".$filas[3]."<br>";
     echo "<b>TELEFONO:  </b>".$filas[4]."<br>";
     echo "<b>GERENTE:  </b>".$filas[5]."<br>";
+    $_SESSION["id_sucursal"] = $filas[6];
   }
 
 ?>
