@@ -35,9 +35,7 @@ function validateLogin($conn){
     header("Location: ../FrontEnd/index.front.php");
 
   }else{
-      ?>
-      <?php
-      include("../FrontEnd/login.front.php");
+      include("../FrontEnd/index.front.php");
       
     ?>
     <h1 class="bad">CREDENCIALES INCORRECTAS</h1>

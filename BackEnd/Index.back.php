@@ -1,5 +1,7 @@
 <?php 
 session_start();
+
+
 echo $_SESSION["nombre"];
     echo " ";
     echo $_SESSION["apellido"];
