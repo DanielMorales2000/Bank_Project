@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+LimpiarEntradas();
 
 echo $_SESSION["nombre"];
     echo " ";
