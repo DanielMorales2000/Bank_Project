@@ -2,7 +2,7 @@
 include('../../conexion.php');
 
 if(isset($_POST['mostrar'])){
-
+  echo "<script>alert('hola');</script>";
 }
 function validateDataFilter($conn, $name, $lastname,$document, $email){
     if( (strlen($name) < 30 && is_string($name))&& 
