@@ -40,18 +40,18 @@
         <form method="post">
             <h1 class="animate__animated animate__backInLeft">Filtro de CuentaHabientes</h1>
             <label for="txtName"> Nombre </label>
-            <input type="text" placeholder="Nombre" name="txtName" maxlength="30"></p>
+            <input type="text" placeholder="Nombre" name="name" maxlength="30">
             <label for="txtLastName"> Apellido </label>
-            <input type="text" placeholder="Apellido" name="txtLastName" maxlength="30"></p>
+            <input type="text" placeholder="Apellido" name="lastname" maxlength="30">
             <label for="txtDocument"> Documento </label>
-            <input type="text" placeholder="Documento" name="txtDocument" maxlength="30"></p>
+            <input type="text" placeholder="Documento" name="document" maxlength="30">
             <label for="txtEmail"> Correo </label>
-            <input type="text" placeholder="Correo" name="txtEmail" maxlength="30"></p>
-            <input type="submit" value="Ingresar" name="ingresar">
+            <input type="text" placeholder="Correo" name="email" maxlength="30">
+            <input type="submit" value="Filtrar" name="filtrar">
         </form>
         <?php
             include('../BackEnd/FiltrarCuentaHabientes.back.php');
-            if(isset($_POST['ingresar'])
+            if(isset($_POST['filtrar'])
             ){
                 if(isset($_POST['name'])){
                     $name = $_POST['name'];

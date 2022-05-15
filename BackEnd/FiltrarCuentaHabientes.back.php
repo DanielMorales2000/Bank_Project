@@ -1,7 +1,9 @@
 <?php 
 include('../../conexion.php');
 
+if(isset($_POST['mostrar'])){
 
+}
 function validateDataFilter($conn, $name, $lastname,$document, $email){
     if( (strlen($name) < 30 && is_string($name))&& 
         (strlen($lastname) < 30 && is_string($lastname)) &&
@@ -21,31 +23,43 @@ function filtrarCuentaHabientes($conn, $name, $lastname,$document, $email){
     $documento = htmlentities(addslashes($document));
     $email = htmlentities(addslashes($email));
 
-
-$consulta= "EXEC [dbo].[FILTRAR_CUENTAHABIENTES]
+    $consulta= "EXEC [dbo].[FILTRAR_CUENTAHABIENTES]
             @NOMBRES = N'$nombre',
             @APELLIDOS = N'$apellido',
             @DOCUMENTO = N'$documento',
             @CORREO = N'$email'";
-  $resultado=sqlsrv_query($conn, $consulta);
-  $filas=sqlsrv_fetch_object($resultado);
+    $resultado=sqlsrv_query($conn, $consulta);
+    echo'
+    <table class="table table-bordered">
+    <thead>
+    <tr align="center">
+        <th width="100" align="center">Nombre</th>
+        <th width="100" align="center">Apellido</th>
+        <th width="100" align="center">Documento</th>
+        <th width="300" align="center">Correo</th>
+    </tr>
+    </thead>
+    <tbody>';
+    while($fila = sqlsrv_fetch_array($resultado)){
+        $nombre = $fila['NOMBRES'];
+        $apellido = $fila['APELLIDOS'];
+        $documento = $fila['DOCUMENTO'];
+        $email = $fila['CORREO'];
 
-  if($filas){
-    //   echo var_dump($filas);
-      foreach($filas as $a){
-          echo $a."<br>";
-      }
-      while ($row = sqlsrv_fetch_array( $resultado, SQLSRV_FETCH_ASSOC )) {
-          foreach($row as $a){
-              echo $a."<br>";
-          }
-        }
-    // echo "<b>BANCO:  </b>".$filas[0]."<br>";
-    // echo "<b>NIT:  </b>".$filas[1]."<br>";
-    // echo "<b>CIUDAD:  </b>".$filas[2]."<br>";
-    // echo "<b>SEDE:  </b>".$filas[3]."<br>";
-    // echo "<b>TELEFONO:  </b>".$filas[4]."<br>";
-    // echo "<b>GERENTE:  </b>".$filas[5]."<br>";
-  }
+        echo 
+        '
+        <tr align="center">
+        <td>'. $documento .'</td>
+        <td>'. $nombre .'</td>
+        <td>'. $apellido .'</td>
+        <td>'. $email .'</td>
+        <td>
+        <form method="post">
+            <input type="submit" name="mostrar" value="Mostrar Datos">
+            <input name="doc" type="hidden" value="'.$documento.'">
+        </form>
+        </tr>';
+    }
+    echo'</tbody>';
 }
 ?>
