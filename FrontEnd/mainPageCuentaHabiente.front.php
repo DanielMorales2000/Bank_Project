@@ -1,10 +1,19 @@
  <?php
     include('../BackEnd/mainPage.back.php');
     regularNavegacion(1);
+
     if(isset($_POST['CloseSession'])){
         closeSession();
     }
-    
+
+    $name = $_SESSION["nombre"];
+    $lastname = $_SESSION["apellido"] ;
+    $document = $_SESSION["documento"];
+    $email = $_SESSION["correo"];
+
+    $consulta = "EXEC [dbo].[CUENTAHABIENTE]
+            @DOCUMENTO = N'$document'";
+    $resultado=sqlsrv_query($conn, $consulta);
 ?>
 <!DOCTYPE html>
 <head>
@@ -18,11 +27,8 @@
 </head>
 <body>
     <nav class="navbar navbar-light bg-light" style="width:fit-content;">
-    <a class="navbar-brand" href="../FrontEnd/CreateAccountHolder.front.php" >
-        <button type="button" class="btn btn-primary">Crear Cuentahabiente</button>
-    </a>
-    <a class="navbar-brand" href="../FrontEnd/login.php">
-        <button type="button" class="btn btn-primary">Primary</button>
+    <a class="navbar-brand" href="../FrontEnd/mainPageCuentaHabiente.front.php" >
+        <button type="button" class="btn btn-primary">Inicio</button>
     </a>
     <a class="navbar-brand">
         <form method="POST">
@@ -31,9 +37,57 @@
     </a>
     </nav>
     <div align="center">
-        <H1>BIENVENIDOS AL BANCO UDEC</H1>
-        <img src="https://www.valoraanalitik.com/wp-content/uploads/2018/03/BancodeBogota-696x461.jpg"
-            width="600" height="400" class="d-inline-block align-top" alt="">
-    </div>
-</body>
-</html>
+        <H1>BIENVENIDO:</H1>
+        <div style="margin-left:20px" align = "left">
+        <b>Documento:</b><?php echo $name ?><br>
+        <b>Nombre:</b><?php echo $lastname ?><br>
+        <b>Apellido:</b><?php echo $document ?><br>
+        <b>Correo:</b><?php echo $email ?><br>
+
+        <table class="table table-bordered">
+        <thead>
+        <tr align="center">
+            <th width="100" align="center">Numero de Cuenta</th>
+            <th width="100" align="center">Tipo de Cuenta</th>
+            <th width="100" align="center">Ciudad</th>
+            <th width="300" align="center">Sede</th>
+            <th width="300" align="center">Saldo</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        while($fila = sqlsrv_fetch_array($resultado)){ 
+            $NUM_CUENTA = $fila['NUM_CUENTA'];
+            $TIPO_CUENTA = $fila['TIPO_CUENTA'];
+            $CIUDAD = $fila['CIUDAD'];
+            $SEDE = $fila['SEDE'];
+            $SALDO = $fila['SALDO'];
+
+            ?>
+            <tr align="center">
+            <td><?php echo $NUM_CUENTA ?></td>
+            <td><?php echo $TIPO_CUENTA ?></td>
+            <td><?php echo $CIUDAD ?></td>
+            <td><?php echo $SEDE ?></td>
+            <td><?php echo $SALDO ?></td>
+            <td>
+                <form action="./Transaccion.front.php" method="post">
+                    <select name="transactionType" required>
+                        <option value="1">Depósito</option>
+                        <option value="2">Retiro</option>
+                        <option value="3">Transferencia</option>
+                    </select>
+                    <input name="NUM_CUENTA" type="hidden" value="<?php echo $NUM_CUENTA ?>">
+                    <input type="submit" name="transactionClicked" value="Realizar Transacción">
+                </form>
+            </td>
+            </tr>
+        <?php
+        }
+        ?>
+        
+        </tbody>
+            </div>
+        </div>
+    </body>
+    </html>

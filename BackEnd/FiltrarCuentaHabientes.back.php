@@ -1,8 +1,13 @@
 <?php 
 include('../../conexion.php');
 
-if(isset($_POST['mostrar'])){
-  echo "<script>alert('hola');</script>";
+if(isset($_POST['mostrar']) && isset($_POST['doc'])){
+    $doc = htmlentities(addslashes($_POST['doc']));
+    $name = htmlentities(addslashes($_POST['name']));
+    $lname = htmlentities(addslashes($_POST['lname']));
+    $email = htmlentities(addslashes($_POST['email']));
+
+    mostrarCuentaHabiente($conn,$doc,$name,$lname,$email);
 }
 function validateDataFilter($conn, $name, $lastname,$document, $email){
     if( (strlen($name) < 30 && is_string($name))&& 
@@ -57,7 +62,50 @@ function filtrarCuentaHabientes($conn, $name, $lastname,$document, $email){
         <form method="post">
             <input type="submit" name="mostrar" value="Mostrar Datos">
             <input name="doc" type="hidden" value="'.$documento.'">
-        </form>
+            <input name="name" type="hidden" value="'.$nombre.'">
+            <input name="lname" type="hidden" value="'.$apellido.'">
+            <input name="email" type="hidden" value="'.$email.'">
+        </form></td>
+        </tr>';
+    }
+    echo'</tbody>';
+}
+
+function mostrarCuentaHabiente($conn,$doc,$name,$lname,$email){
+    $consulta= "EXEC [dbo].[CUENTAHABIENTE]
+            @DOCUMENTO = N'$doc'";
+    $resultado=sqlsrv_query($conn, $consulta);
+
+    echo'
+    <div style="margin-left:20px" align = "left">
+    <b>Documento:</b> '.$doc.'<br>
+    <b>Nombre:</b> '.$name.'<br>
+    <b>Apellido:</b> '.$lname.'<br>
+    <b>Correo:</b> '.$email.'<br>
+    </div>
+    <table class="table table-bordered">
+    <thead>
+    <tr align="center">
+        <th width="100" align="center">Numero de Cuenta</th>
+        <th width="100" align="center">Tipo de Cuenta</th>
+        <th width="100" align="center">Ciudad</th>
+        <th width="300" align="center">Sede</th>
+    </tr>
+    </thead>
+    <tbody>';
+    while($fila = sqlsrv_fetch_array($resultado)){ 
+        $NUM_CUENTA = "******".substr($fila['NUM_CUENTA'],-4);
+        $TIPO_CUENTA = $fila['TIPO_CUENTA'];
+        $CIUDAD = $fila['CIUDAD'];
+        $SEDE = $fila['SEDE'];
+
+        echo 
+        '
+        <tr align="center">
+        <td>'. $NUM_CUENTA .'</td>
+        <td>'. $TIPO_CUENTA .'</td>
+        <td>'. $CIUDAD .'</td>
+        <td>'. $SEDE .'</td>
         </tr>';
     }
     echo'</tbody>';
