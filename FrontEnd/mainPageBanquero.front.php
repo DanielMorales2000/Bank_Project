@@ -1,11 +1,15 @@
  <?php
+ //include('../BackEnd/mainPage.back.php');
+
+ session_start();
+
+ var_dump($_SESSION);
  ini_set('display_errors', 1);
  ini_set('display_startup_errors', 1);
  error_reporting(E_ALL);
 
 
  
- include('../BackEnd/mainPage.back.php');
  regularNavegacion(2);
  if(isset($_POST['CloseSession'])){
      closeSession();
