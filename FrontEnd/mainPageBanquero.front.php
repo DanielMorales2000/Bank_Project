@@ -1,13 +1,13 @@
  <?php
  //include('../BackEnd/mainPage.back.php');
 
- session_start();
 
- var_dump($_SESSION);
  ini_set('display_errors', 1);
  ini_set('display_startup_errors', 1);
  error_reporting(E_ALL);
-
+ session_start();
+ var_dump($_SESSION);
+ exit();
 
  
  regularNavegacion(2);
