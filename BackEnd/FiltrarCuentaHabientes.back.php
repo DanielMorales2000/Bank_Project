@@ -1,5 +1,5 @@
 <?php 
-include('../../conexion.php');
+include('../conexion.php');
 
 if(isset($_POST['mostrar']) && isset($_POST['doc'])){
     $doc = htmlentities(addslashes($_POST['doc']));
