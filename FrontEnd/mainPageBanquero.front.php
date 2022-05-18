@@ -1,4 +1,8 @@
- 
+ <?php
+ ini_set('display_errors', 1);
+ ini_set('display_startup_errors', 1);
+ error_reporting(E_ALL);
+ ?>
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -10,7 +14,7 @@
 <body>
     <nav class="navbar navbar-light bg-light" style="width:fit-content;">
     <a class="navbar-brand" href="../FrontEnd/mainPageBanquero.front.php">
-        <button type="button" class="btn btn-primary">Pagina Principal</button>
+        <button type="button" class="btn btn-primary">Página Principal</button>
     </a>
     <a class="navbar-brand" href="../FrontEnd/CreateAccountHolder.front.php" >
         <button type="button" class="btn btn-primary">Crear CuentaHabiente</button>
