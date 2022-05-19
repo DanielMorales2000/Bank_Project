@@ -1,5 +1,8 @@
 <?php
 include('../BackEnd/mainPage.back.php');
+if(isset($_POST['CloseSession'])){
+    closeSession();
+}
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -35,9 +38,6 @@ error_reporting(E_ALL);
             <!-- width="600" height="400" class="d-inline-block align-top" alt=""> -->
         <?php
             regularNavegacion(2);
-            if(isset($_POST['CloseSession'])){
-                closeSession();
-            }
             seeData($conn); 
         ?>
     </div>
