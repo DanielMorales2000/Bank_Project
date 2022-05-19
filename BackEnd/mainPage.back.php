@@ -1,12 +1,13 @@
 <?php 
+session_start();
 include('../conexion.php');
 include('../BD_&_Security/tools.php');
-session_start();
 LimpiarEntradas();
 
-$documento = $_SESSION["documento"];
+function seeData($conn){
+  $documento = $_SESSION["documento"];
 
-$consulta= "EXEC [dbo].[PA_BANCO]
+  $consulta= "EXEC [dbo].[PA_BANCO]
       @DOCUMENTO = N'$documento'";
 
   $resultado=sqlsrv_query($conn, $consulta);
@@ -21,5 +22,7 @@ $consulta= "EXEC [dbo].[PA_BANCO]
     echo "<b>GERENTE:  </b>".$filas[5]."<br>";
     $_SESSION["id_sucursal"] = $filas[6];
   }
+}
+
 
 ?>

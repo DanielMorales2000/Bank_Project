@@ -1,20 +1,8 @@
- <?php
- //include('../BackEnd/mainPage.back.php');
-
-
- ini_set('display_errors', 1);
- ini_set('display_startup_errors', 1);
- error_reporting(E_ALL);
- session_start();
- var_dump($_SESSION);
- exit();
-
- 
- regularNavegacion(2);
- if(isset($_POST['CloseSession'])){
-     closeSession();
- }
-
+<?php
+include('../BackEnd/mainPage.back.php');
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
  ?>
 <!DOCTYPE html>
 <head>
@@ -45,7 +33,13 @@
         <H1>BIENVENIDOS AL BANCO UDEC</H1>
         <!-- <img src="https://www.valoraanalitik.com/wp-content/uploads/2018/03/BancodeBogota-696x461.jpg" -->
             <!-- width="600" height="400" class="d-inline-block align-top" alt=""> -->
-
+        <?php
+            regularNavegacion(2);
+            if(isset($_POST['CloseSession'])){
+                closeSession();
+            }
+            seeData($conn); 
+        ?>
     </div>
 </body>
 </html>
