@@ -4,6 +4,7 @@
      */
     
     function regularNavegacion($id){
+        session_start();
         if(isset($_SESSION["tip_user"]) && $_SESSION["tip_user"] != null){
             if($_SESSION["tip_user"] != $id){
                 echo $_SESSION["tip_user"];
