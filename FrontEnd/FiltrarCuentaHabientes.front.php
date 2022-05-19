@@ -1,10 +1,13 @@
  <?php 
- session_start();
- include('../BD_&_Security/tools.php');
- regularNavegacion(2);
  ini_set('display_errors', 1);
  ini_set('display_startup_errors', 1);
  error_reporting(E_ALL);
+ session_start();
+ if(isset($_POST['CloseSession'])){
+    closeSession();
+ }
+ include('../BD_&_Security/tools.php');
+ regularNavegacion(2);
  LimpiarEntradas();        
 
  $name = "";
@@ -68,9 +71,7 @@
                 }
                 validateDataFilter($conn, $name, $lastname, $document, $email);
             }
-            if(isset($_POST['CloseSession'])){
-                closeSession();
-            }
+            
         ?>
     </div>
 </body>
