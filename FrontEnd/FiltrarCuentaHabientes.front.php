@@ -1,6 +1,9 @@
  <?php 
- session_start();
+ include('../BackEnd/FiltrarCuentaHabientes.back.php');
  echo("XDXDXDXD:".$_SESSION["tip_user"] );
+ if(isset($_POST['CloseSession'])){
+    closeSession();
+ }
 //  if(isset($_SESSION["tip_user"]) && $_SESSION["tip_user"] != null){
 //     if($_SESSION["tip_user"] != $id){
 //         echo $_SESSION["tip_user"];
@@ -15,9 +18,7 @@
  ini_set('display_errors', 1);
  ini_set('display_startup_errors', 1);
  error_reporting(E_ALL);
- if(isset($_POST['CloseSession'])){
-    closeSession();
- }
+ 
  include('../BD_&_Security/tools.php');
 //  regularNavegacion(2);
  LimpiarEntradas();        
@@ -66,7 +67,7 @@
             <input type="submit" value="Filtrar" name="filtrar">
         </form>
         <?php
-            include('../BackEnd/FiltrarCuentaHabientes.back.php');
+            
             if(isset($_POST['filtrar'])
             ){
                 if(isset($_POST['name'])){
