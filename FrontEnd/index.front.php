@@ -1,13 +1,13 @@
 <?php
+include('../BackEnd/index.back.php');
+include('../conexion.php');
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-    include('../BackEnd/index.back.php');
-    include('../conexion.php');
-    LimpiarEntradas();
-    if(isset($_POST['txtUser']) && isset($_POST['txtPassword']) && isset($_POST['txtRole'])){
-        validateLogin($conn);
-    }
+LimpiarEntradas();
+if(isset($_POST['txtUser']) && isset($_POST['txtPassword']) && isset($_POST['txtRole'])){
+    validateLogin($conn);
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">

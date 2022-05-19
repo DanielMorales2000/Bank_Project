@@ -1,8 +1,7 @@
 <?php
-
+session_start();
 include('../conexion.php');
 include('../BD_&_Security/tools.php');
-session_start();
 redireccionarLogin();
 
 /**
