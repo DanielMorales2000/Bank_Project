@@ -13,6 +13,7 @@
         }
         else if($_SESSION["tip_user"] == null){
             header("Location: ../FrontEnd/index.front.php");
+            die();
         }
     }
 
