@@ -1,6 +1,6 @@
  <?php 
  session_start();
- echo($_SESSION["tip_user"] );
+ echo("XDXDXDXD:".$_SESSION["tip_user"] );
 //  if(isset($_SESSION["tip_user"]) && $_SESSION["tip_user"] != null){
 //     if($_SESSION["tip_user"] != $id){
 //         echo $_SESSION["tip_user"];
