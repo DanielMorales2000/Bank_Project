@@ -1,11 +1,11 @@
  <?php 
  session_start();
  include('../BD_&_Security/tools.php');
+ regularNavegacion(2);
  ini_set('display_errors', 1);
  ini_set('display_startup_errors', 1);
  error_reporting(E_ALL);
  LimpiarEntradas();        
- regularNavegacion(2);
 
  $name = "";
  $lastname = "";
