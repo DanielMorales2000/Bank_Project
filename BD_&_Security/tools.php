@@ -11,7 +11,7 @@
                 header("Location: ../FrontEnd/index.front.php");
             }
         }
-        else if($_SESSION["tip_user"] == null){
+        else{
             // header("Location: ../FrontEnd/index.front.php");
             echo '<script> window.location.replace("../FrontEnd/index.front.php"); </script>';
         }

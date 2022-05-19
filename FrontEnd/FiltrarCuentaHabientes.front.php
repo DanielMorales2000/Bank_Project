@@ -1,9 +1,9 @@
  <?php 
  session_start();
+ include('../BD_&_Security/tools.php');
  ini_set('display_errors', 1);
  ini_set('display_startup_errors', 1);
  error_reporting(E_ALL);
- include('../BD_&_Security/tools.php');
  LimpiarEntradas();        
  regularNavegacion(2);
 
