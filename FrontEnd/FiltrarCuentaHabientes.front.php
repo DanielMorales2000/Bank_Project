@@ -1,25 +1,18 @@
+<?php ob_start();?>
  <?php 
+  ini_set('display_errors', 1);
+  ini_set('display_startup_errors', 1);
+  error_reporting(E_ALL);
  include('../BackEnd/FiltrarCuentaHabientes.back.php');
+ include('../BD_&_Security/tools.php');
  echo("XDXDXDXD:".$_SESSION["tip_user"] );
+ regularNavegacion(2);
  if(isset($_POST['CloseSession'])){
     closeSession();
  }
-//  if(isset($_SESSION["tip_user"]) && $_SESSION["tip_user"] != null){
-//     if($_SESSION["tip_user"] != $id){
-//         echo $_SESSION["tip_user"];
-//         echo " ".$id;
-//         header("Location: ../FrontEnd/index.front.php");
-//     }
-// }
-// else{
-//     // header("Location: ../FrontEnd/index.front.php");
-//     echo '<script> window.location.replace("../FrontEnd/index.front.php"); </script>';
-// }
- ini_set('display_errors', 1);
- ini_set('display_startup_errors', 1);
- error_reporting(E_ALL);
+
  
- include('../BD_&_Security/tools.php');
+
 //  regularNavegacion(2);
  LimpiarEntradas();        
 
@@ -86,6 +79,7 @@
             }
             
         ?>
+        <?php ob_end_flush(); ?>
     </div>
 </body>
 </html>

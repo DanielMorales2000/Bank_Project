@@ -1,3 +1,4 @@
+<?php ob_start();?>
 <?php
 include('../BackEnd/index.back.php');
 include('../conexion.php');
@@ -9,6 +10,7 @@ if(isset($_POST['txtUser']) && isset($_POST['txtPassword']) && isset($_POST['txt
     validateLogin($conn);
 }
 ?>
+<?php ob_end_flush(); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

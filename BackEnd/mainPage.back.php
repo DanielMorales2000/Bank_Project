@@ -1,3 +1,4 @@
+<?php ob_start();?>
 <?php 
 session_start();
 include('../conexion.php');
@@ -26,3 +27,4 @@ function seeData($conn){
 
 
 ?>
+<?php ob_end_flush(); ?>

@@ -1,3 +1,4 @@
+<?php ob_start();?>
 <?php 
 session_start();
 include('../conexion.php');
@@ -112,3 +113,4 @@ function mostrarCuentaHabiente($conn,$doc,$name,$lname,$email){
     echo'</tbody>';
 }
 ?>
+<?php ob_end_flush(); ?>

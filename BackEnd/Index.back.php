@@ -1,3 +1,4 @@
+<?php ob_start();?>
 <?php
 session_start();
 include('../conexion.php');
@@ -54,3 +55,4 @@ function redireccionarLogin(){
   }
 }
 ?>
+<?php ob_end_flush(); ?>

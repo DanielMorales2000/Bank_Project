@@ -1,3 +1,4 @@
+<?php ob_start();?>
 <?php
 session_start();
 include('../conexion.php');
@@ -67,3 +68,4 @@ function CreateUser($conn){
     }
 }
 ?>
+<?php ob_end_flush(); ?>
