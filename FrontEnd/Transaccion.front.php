@@ -70,7 +70,7 @@ error_reporting(E_ALL);
         <p>Valor <input type="number" placeholder="Valor" name="mount" required=true maxlength="50"></p>
         <p>Concepto<input type="text" placeholder="Concepto" name="concepto" minlength="5" required=true maxlength="50"></p>
         <p>Contraseña <input type="password" placeholder="Contraseña" name="psw" minlength="4" required=true maxlength="30"></p>
-        <input type="submit" value="movement" name="movement">
+        <input type="submit" value="Realizar" name="movement">
     </form>
     </div>
     </body>
