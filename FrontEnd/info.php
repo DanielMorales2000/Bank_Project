@@ -1,16 +1,14 @@
 
-<?php 
+<?php
 
 
-phpinfo();
 
- ini_set('display_errors', 1);
- ini_set('display_startup_errors', 1);
- error_reporting(E_ALL);
- session_start();
- var_dump($_SESSION);
- exit();
+require_once '../vendor/autoload.php';
 
+$mpdf = new \Mpdf\Mpdf();
+$mpdf->WriteHTML('<h1>Hola mundo</h1>');
+$mpdf->WriteHTML('<p>Soy un archivo PDF</p>');
 
- 
+var_dump($mpdf);
+
 ?>
