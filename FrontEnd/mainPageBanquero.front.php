@@ -4,8 +4,7 @@ include('../BackEnd/mainPage.back.php');
 if(isset($_POST['CloseSession'])){
     closeSession();
 }
- ?>
- <?php ob_end_flush(); ?>
+?>
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -40,6 +39,7 @@ if(isset($_POST['CloseSession'])){
             regularNavegacion(2);
             seeData($conn); 
         ?>
+         <?php ob_end_flush(); ?>
     </div>
 </body>
 </html>

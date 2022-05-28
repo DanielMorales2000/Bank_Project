@@ -12,8 +12,7 @@
             }
         }
         else{
-            // header("Location: ../FrontEnd/index.front.php");
-            echo '<script> window.location.replace("../FrontEnd/index.front.php"); </script>';
+            header("Location: ../FrontEnd/index.front.php");
         }
     }
 
@@ -50,10 +49,7 @@
     function MostrarErrores(){
         error_reporting(E_ALL);
         ini_set('display_errors',1);
-
-        // ini_set('display_errors', 1);
-        // ini_set('display_startup_errors', 1);
-        // error_reporting(E_ALL); 
+        ini_set('display_startup_errors', 1);
     }
 
     function IniciarSesionSegura(){
@@ -80,7 +76,7 @@
         ]);
         
         session_start();
-        session_regenerate_id(true);
+        // session_regenerate_id(true);
     }
 
     /**

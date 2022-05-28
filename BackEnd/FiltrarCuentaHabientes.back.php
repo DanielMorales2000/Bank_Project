@@ -1,9 +1,9 @@
 <?php ob_start();?>
 <?php 
 // session_start();
-GenerarAntiCSRF();
 include('../BD_&_Security/tools.php');
 include('../conexion.php');
+GenerarAntiCSRF();
 IniciarSesionSegura();
 
 if(isset($_POST['mostrar']) && isset($_POST['doc'])){

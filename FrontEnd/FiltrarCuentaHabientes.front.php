@@ -1,15 +1,11 @@
 <?php ob_start();?>
  <?php 
  include('../BackEnd/FiltrarCuentaHabientes.back.php');
- include('../BD_&_Security/tools.php');
  regularNavegacion(2);
  if(isset($_POST['CloseSession'])){
     closeSession();
  }
 
- 
- require_once "funcionesCSRF.php";
-//  regularNavegacion(2);
  LimpiarEntradas();        
 
  $name = "";
