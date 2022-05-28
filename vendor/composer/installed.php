@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '10f684a16a65c4e868ab7c03d17932c0981bd864',
+        'reference' => '4dd4b0e0d09dfe85e3248ccec2ea663211223646',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '10f684a16a65c4e868ab7c03d17932c0981bd864',
+            'reference' => '4dd4b0e0d09dfe85e3248ccec2ea663211223646',
             'dev_requirement' => false,
         ),
         'mpdf/mpdf' => array(
@@ -53,6 +53,15 @@
             'install_path' => __DIR__ . '/../php-http/message-factory',
             'aliases' => array(),
             'reference' => 'a478cb11f66a6ac48d8954216cfed9aa06a501a1',
+            'dev_requirement' => false,
+        ),
+        'phpmailer/phpmailer' => array(
+            'pretty_version' => 'v6.6.0',
+            'version' => '6.6.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpmailer/phpmailer',
+            'aliases' => array(),
+            'reference' => 'e43bac82edc26ca04b36143a48bde1c051cfd5b1',
             'dev_requirement' => false,
         ),
         'psr/http-message' => array(
