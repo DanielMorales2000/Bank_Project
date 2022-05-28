@@ -1,9 +1,11 @@
 <?php ob_start();?>
 <?php
-session_start();
+// session_start();
+IniciarSesionSegura();
 include('../conexion.php');
 include('../BD_&_Security/tools.php');
 LimpiarEntradas();
+GenerarAntiCSRF();
 
 if(isset($_POST['name']) && 
     isset($_POST['lastname']) &&

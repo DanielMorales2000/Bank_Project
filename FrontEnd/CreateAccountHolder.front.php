@@ -1,8 +1,5 @@
 <?php ob_start();?>
 <?php 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL); 
 include('../BackEnd/CreateAccountHolder.back.php');
 regularNavegacion(2);
 if(isset($_POST['CloseSession'])){
@@ -35,6 +32,7 @@ if(isset($_POST['CloseSession'])){
     </a>
     <a class="navbar-brand">
         <form method="POST">
+            <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">    
             <button type="submit" class="btn btn-link" name="CloseSession">Cerrar Sesión</button>
         </form>
     </a>
@@ -53,6 +51,8 @@ if(isset($_POST['CloseSession'])){
             <option value="2">Corriente</option>
         </select></p>
       <p>Clave Cuenta <input type="password" placeholder="ingrese clave de cuenta" name="pswAccount" minlength="4" required=true maxlength="30"></p>
+      <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">
+      
       <input type="submit" value="Ingresar">
    </form>
    </div>

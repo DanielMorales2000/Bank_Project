@@ -4,9 +4,6 @@ include('../BackEnd/mainPage.back.php');
 if(isset($_POST['CloseSession'])){
     closeSession();
 }
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
  ?>
  <?php ob_end_flush(); ?>
 <!DOCTYPE html>
@@ -30,6 +27,7 @@ error_reporting(E_ALL);
     </a>
     <a class="navbar-brand">
         <form method="POST">
+            <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">    
             <button type="submit" class="btn btn-link" name="CloseSession">Cerrar Sesión</button>
         </form>
     </a>

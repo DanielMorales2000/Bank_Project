@@ -2,9 +2,6 @@
 <?php
 include('../BackEnd/index.back.php');
 include('../conexion.php');
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 LimpiarEntradas();
 if(isset($_POST['txtUser']) && isset($_POST['txtPassword']) && isset($_POST['txtRole'])){
     validateLogin($conn);
@@ -31,6 +28,9 @@ if(isset($_POST['txtUser']) && isset($_POST['txtPassword']) && isset($_POST['txt
             <option value="1" selected>CuentaHabiente</option>
             <option value="2">Banquero</option>
         </select>
+
+        <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">
+
         <input type="submit" value="Ingresar">
    </form> 
 </body>

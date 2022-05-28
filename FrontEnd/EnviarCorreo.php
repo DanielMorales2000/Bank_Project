@@ -1,52 +1,59 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
 
+require '..\vendor\phpmailer\phpmailer\src\Exception.php';
 /* Clase principal de PHPMailer */
-require 'D:\xampp\htdocs\Linea_Prof_3\Banco_Project\PHPMailer\PHPMailer\src\PHPMailer.php';
-
+require '..\vendor\phpmailer\phpmailer\src\PHPMailer.php';
 /* Clase SMTP, necesaria si quieres usar SMTP */
-require 'D:\xampp\htdocs\Linea_Prof_3\Banco_Project\PHPMailer\PHPMailer\src\SMTP.php';
+require '..\vendor\phpmailer\phpmailer\src\SMTP.php';
 
-//instancio un objeto de la clase PHPMailer
-$mail = new PHPMailer(); // defaults to using php "mail()"
+require '..\vendor\autoload.php';
+//Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(TRUE);
 
-//defino el cuerpo del mensaje en una variable $body
-//se trae el contenido de un archivo de texto
-//también podríamos hacer $body="contenido...";
-$body = file_get_contents('contenido.html');
-//Esta línea la he tenido que comentar
-//porque si la pongo me deja el $body vacío
-// $body = preg_replace('/[]/i','',$body);
+try {
+    //Recibir todos los parámetros del formulario
+    $para = $_POST['email'];
+    $asunto = $_POST['asunto'];
+    // $mensaje = $_POST['mensaje'];
 
-//defino el email y nombre del remitente del mensaje
-$mail­>SetFrom('danielsuarez8910@outlook.com', 'Daniel');
+    //Server settings
+    $mail->SMTPDebug = 0;                      //Enable verbose debug output
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'smtp.office365.com';      //Set the SMTP server to send through
+    // smtp.office365.com
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'danielsuarez8910@outlook.com';                     //SMTP username
+    $mail->Password   = base64_decode('OTgwNzIw');                               //SMTP password
+    $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
+    $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-//defino la dirección de email de "reply", a la que responder los mensajes
-//Obs: es bueno dejar la misma dirección que el From, para no caer en spam
-$mail­>AddReplyTo("jdanielsuarez@ucundinamarc.edu.co","Jose Daniel");
-//Defino la dirección de correo a la que se envía el mensaje
-$address = "email@destinatario.com";
-//la añado a la clase, indicando el nombre de la persona destinatario
-$mail­>AddAddress($address, "Nombre completo");
+    //Recipients
+    $mail->setFrom('danielsuarez8910@outlook.com', 'Daniel');
+    // $mail->addAddress('jdanielsuarez@ucundinamarca.edu.co', 'Jose');     //Add a recipient
 
-//Añado un asunto al mensaje
-$mail­>Subject = "Envío de email con PHPMailer en PHP";
+    //Content
+    $mail->AddAddress($para);
+    // $mail->AddAddress('Correo Destino');
+    $mail->Subject = $asunto;   
+    // $mail->Subject = 'Asunto que quiera ir';   
+    $mail->Body    = file_get_contents('contenido.html');
+    $mail->MsgHTML(file_get_contents('contenido.html'));
+    // $mail->AltBody = ' Mensaje Alternativo This is the body in plain text for non-HTML mail clients';
 
-//Puedo definir un cuerpo alternativo del mensaje, que contenga solo texto
-$mail­>AltBody = "Cuerpo alternativo del mensaje";
-
-//inserto el texto del mensaje en formato HTML
-$mail­>MsgHTML($body);
-
-//asigno un archivo adjunto al mensaje
-$mail­>AddAttachment("ruta/archivo_adjunto.gif");
-
-//envío el mensaje, comprobando si se envió correctamente
-if(!$mail­>Send()) {
-echo "Error al enviar el mensaje: " . $mail­>ErrorInfo;
-} else {
-echo "Mensaje enviado!!";
+    $mail->send();
+    echo'<script type="text/javascript">
+            alert("Enviado Correctamente");
+            window.location="http://localhost/Linea_Prof_3/Banco_Project/FrontEnd/correo1.php"
+         </script>';
+    
+} catch (Exception $e) {
+    echo'<script type="text/javascript">
+            alert("NO ENVIADO, intentar de nuevo");
+            window.location="http://localhost/Linea_Prof_3/Banco_Project/FrontEnd/correo1.php"
+         </script>';
 }
 ?>
 

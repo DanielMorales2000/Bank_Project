@@ -1,10 +1,8 @@
 <?php ob_start();?>
  <?php
- ini_set('display_errors', 1);
- ini_set('display_startup_errors', 1);
- error_reporting(E_ALL);
     include('../BackEnd/mainPage.back.php');
     regularNavegacion(1);
+
 
     if(isset($_POST['CloseSession'])){
         closeSession();
@@ -34,6 +32,7 @@
     </a>
     <a class="navbar-brand">
         <form method="POST">
+            <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">    
             <button type="submit" class="btn btn-link" name="CloseSession">Cerrar Sesión</button>
         </form>
     </a>
@@ -80,6 +79,9 @@
                         <option value="3">Transferencia</option>
                     </select>
                     <input name="NUM_CUENTA" type="hidden" value="<?php echo $NUM_CUENTA ?>">
+
+                    <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">
+
                     <input type="submit" name="transactionClicked" value="Realizar Transacción">
                 </form>
             </td>

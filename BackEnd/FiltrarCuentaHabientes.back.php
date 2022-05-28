@@ -1,6 +1,8 @@
 <?php ob_start();?>
 <?php 
-session_start();
+// session_start();
+IniciarSesionSegura();
+GenerarAntiCSRF();
 include('../conexion.php');
 
 if(isset($_POST['mostrar']) && isset($_POST['doc'])){
@@ -67,6 +69,7 @@ function filtrarCuentaHabientes($conn, $name, $lastname,$document, $email){
             <input name="name" type="hidden" value="'.$nombre.'">
             <input name="lname" type="hidden" value="'.$apellido.'">
             <input name="email" type="hidden" value="'.$email.'">
+            <input type="hidden" name="anticsrf" value="'.$_SESSION['anticsrf'].'">
         </form></td>
         </tr>';
     }

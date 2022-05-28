@@ -1,8 +1,5 @@
 <?php ob_start();?>
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
     include('../BackEnd/mainPage.back.php');
     regularNavegacion(1);
 
@@ -51,6 +48,7 @@ error_reporting(E_ALL);
     </a>
     <a class="navbar-brand">
         <form method="POST">
+            <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">    
             <button type="submit" class="btn btn-link" name="CloseSession">Cerrar Sesión</button>
         </form>
     </a>
@@ -70,6 +68,9 @@ error_reporting(E_ALL);
         <p>Valor <input type="number" placeholder="Valor" name="mount" required=true maxlength="50"></p>
         <p>Concepto<input type="text" placeholder="Concepto" name="concepto" minlength="5" required=true maxlength="50"></p>
         <p>Contraseña <input type="password" placeholder="Contraseña" name="psw" minlength="4" required=true maxlength="30"></p>
+        
+        <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">
+
         <input type="submit" value="Realizar" name="movement">
     </form>
     </div>

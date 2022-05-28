@@ -1,18 +1,14 @@
 <?php ob_start();?>
  <?php 
-  ini_set('display_errors', 1);
-  ini_set('display_startup_errors', 1);
-  error_reporting(E_ALL);
  include('../BackEnd/FiltrarCuentaHabientes.back.php');
  include('../BD_&_Security/tools.php');
- echo("XDXDXDXD:".$_SESSION["tip_user"] );
  regularNavegacion(2);
  if(isset($_POST['CloseSession'])){
     closeSession();
  }
 
  
-
+ require_once "funcionesCSRF.php";
 //  regularNavegacion(2);
  LimpiarEntradas();        
 
@@ -57,6 +53,8 @@
             <input type="text" placeholder="Documento" name="document" maxlength="30">
             <label for="txtEmail"> Correo </label>
             <input type="text" placeholder="Correo" name="email" maxlength="30">
+            <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">
+
             <input type="submit" value="Filtrar" name="filtrar">
         </form>
         <?php
