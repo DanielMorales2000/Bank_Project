@@ -1,9 +1,9 @@
 <?php ob_start();?>
 <?php
 // session_start();
-IniciarSesionSegura();
 include('../conexion.php');
 include('../BD_&_Security/tools.php');
+IniciarSesionSegura();
 LimpiarEntradas();
 GenerarAntiCSRF();
 

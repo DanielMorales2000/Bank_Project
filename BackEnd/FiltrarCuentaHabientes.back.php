@@ -1,9 +1,10 @@
 <?php ob_start();?>
 <?php 
 // session_start();
-IniciarSesionSegura();
 GenerarAntiCSRF();
+include('../BD_&_Security/tools.php');
 include('../conexion.php');
+IniciarSesionSegura();
 
 if(isset($_POST['mostrar']) && isset($_POST['doc'])){
     $doc = htmlentities(addslashes($_POST['doc']));
