@@ -9,7 +9,7 @@ IniciarSesionSegura();
 GenerarAntiCSRF();
 
 function seeData($conn){
-  $documento = $_SESSION["documento"];
+  $documento = 1005228835;
 
   $consulta= "EXEC [dbo].[PA_BANCO]
       @DOCUMENTO = N'$documento'";
