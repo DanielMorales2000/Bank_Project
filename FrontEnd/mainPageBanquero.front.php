@@ -10,6 +10,7 @@ if(isset($_POST['GenerateReports'])){
     GenerateReports($conn);
 }
 ?>
+<?php ob_end_flush(); ?>
 
 
 <!DOCTYPE html>
@@ -52,7 +53,7 @@ if(isset($_POST['GenerateReports'])){
             <?php
                 // seeData($conn);
             ?>
-            <?php ob_end_flush(); ?>
+            
     </div>
 </body>
 </html>
