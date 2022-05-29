@@ -11,7 +11,8 @@ require '..\vendor\phpmailer\phpmailer\src\SMTP.php';
 
 require '..\vendor\autoload.php';
 //Create an instance; passing `true` enables exceptions
-function CorreoRestablecimiento($email){
+function CorreoRestablecimiento($email,$CLAVE_RANDOM){
+    echo $CLAVE_RANDOM;
 
     $mail = new PHPMailer(TRUE);
     try {
@@ -35,12 +36,25 @@ function CorreoRestablecimiento($email){
         $mail->AddAddress($email); 
         $mail->Subject = 'Restablecimiento de Contraseña';
         $mail->IsHTML(true);
-        $mail->Body = file_get_contents('contenido.html');
-        $mail->MsgHTML(file_get_contents('contenido.html'));
+        $cuerpo = '
+        <html>
+        <head>
+            <title>Validacion de cuenta</title>
+            </head>
+            <body>
+            <p>Ya casi puedes restablecer tu clave</p>
+        <br>
+        <a href="http://localhost/Linea_Prof_3/Banco_Project/FrontEnd/RestablecerClave.php">Restablecer Clave</a><br>
+        <b>Clave Generada:</b>'.$CLAVE_RANDOM.'
+        <br>
+        </body>
+        </html>';
+        $mail->Body = $cuerpo;
         $mail->send();
         echo'<script type="text/javascript">
                 alert("Enviado Correctamente");
-            </script>';
+                window.location="http://localhost/Linea_Prof_3/Banco_Project/FrontEnd/index.front.php"
+                </script>';
         
     } catch (Exception $e) {
         echo $e;

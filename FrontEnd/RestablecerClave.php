@@ -14,23 +14,55 @@
             <h3><b>RESTABLECIMIENTO DE CONTRASEÑA</b></h3>
          </header>
          <section id="principal">
-            <form id="formulario" method="post" action="#" enctype="multipart/form-data">
+            <form method="post" >
                <div class="campos">
-                  <label>Cedula:</label>
-                  <input type="text" name="cedula" required> <br><br>
+                  <label>Documento:</label>
+                  <input type="text" name="documento" required> <br><br>
+               </div>
+               <div class="campos">
+                  <label>Clave Antigua:</label>
+                  <input type="text" name="ClaveAntigua"><br><br>
                </div>
                <div class="campos">
                   <label>Clave Nueva:</label>
-                  <input type="text" name="claveNueva"><br><br>
-               </div>
-               <div class="campos">
-                  <label>Clave Nueva:</label>
-                  <input type="text" name="confClaveNueva"><br><br>
+                  <input type="text" name="ClaveNueva"><br><br>
                </div>
                <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">
-               <input id="submit" type="submit" name="enviar" value="Enviar Correo">
+               <input id="submit" type="submit" name="cambiarClave" value="Cambiar Clave">
             </form>
          </section>
       </div>
    </body>
 </html>
+
+<?php 
+include('../conexion.php');
+
+if (isset($_POST['cambiarClave']) &&
+   isset($_POST['ClaveNueva']) && 
+   isset($_POST['ClaveAntigua']) && 
+   isset($_POST['documento'])) {
+
+   CambiarClave($conn,md5($_POST['ClaveAntigua']),md5($_POST['ClaveNueva']),$_POST['documento']);
+}
+
+function CambiarClave($conn,$claveGenerada, $claveNueva,$documento){
+   $changeQuery = "EXEC [dbo].[PA_CHANGE_PASSWORD]
+   @CLAVE_GENERADA = N'$claveGenerada',
+   @CLAVE_NUEVA = N'$claveNueva',
+   @DOCUMENTO = N'$documento'";
+   $changeResult=sqlsrv_query($conn, $changeQuery);
+   while($fila = sqlsrv_fetch_array($changeResult)){
+      if ($fila["ESTADO"] == "TRUE") {
+         echo'<script type="text/javascript">
+               alert("CONTRASEÑA ACTUALIZADA!!!!!!!");
+               window.location="http://localhost/Linea_Prof_3/Banco_Project/FrontEnd/index.front.php"
+               </script>';
+      }
+      else {
+         echo "DATOS ERRÓNEOS";
+      }
+   }
+}
+?>
+

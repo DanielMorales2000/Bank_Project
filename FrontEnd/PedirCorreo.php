@@ -1,13 +1,7 @@
 <?php ob_start();?>
 <?php
 include('../conexion.php');
-
 include('../FrontEnd/CorreoRestClave.php');
-if(isset($_POST['enviar']) && isset($_POST["correoRestClave"])){
-    $correo = $_POST["correoRestClave"];
-    echo $correo;
-    CorreoRestablecimiento($correo);
-} 
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,21 +18,43 @@ if(isset($_POST['enviar']) && isset($_POST["correoRestClave"])){
          <header>
             <h3><b>RESTABLECIMIENTO DE CONTRASEÑA</b></h3>
          </header>
-         <section id="principal">
-            <form id="formulario" method="post" action="#">
-               <!-- <div class="campos">
-                  <label>Cedula:</label>
-                  <input type="text" name="cedula" required> <br><br>
-               </div> -->
+            <form method="post">
                <div class="campos">
-                  <label>Correo:</label>
-                  <input type="email" name="correoRestClave"><br><br>
+                  <label>Documento:</label>
+                  <input type="number" name="docRestClave"><br><br>
                </div>
                <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">
                <input id="submit" type="submit" name="enviar" value="Enviar Correo">
             </form>
-         </section>
       </div>
    </body>
 </html>
+
+
+<?php
+if(isset($_POST['enviar']) && isset($_POST["docRestClave"])){
+   $doc = $_POST["docRestClave"];
+   validarRestablecimiento($doc,$conn);
+} 
+
+function validarRestablecimiento($documento,$conn){
+   
+   $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
+   $CLAVE_RANDOM = substr(str_shuffle($permitted_chars), 0, 10);
+   $CLAVE_SEND = MD5($CLAVE_RANDOM);
+   
+   $validarQuery = "EXEC [dbo].[PA_VALIDAR_RESTABLECIMIENTO]
+   @DOCUMENTO = N'$documento',
+   @CLAVE = N'$CLAVE_SEND'";
+   $validarResult=sqlsrv_query($conn, $validarQuery);   
+
+   while($fila = sqlsrv_fetch_array($validarResult)){
+      
+      $email = $fila['CORREO'];
+
+      CorreoRestablecimiento($email,$CLAVE_RANDOM);
+   }
+}
+?>
+
 <?php ob_end_flush(); ?>
