@@ -6,6 +6,7 @@ LimpiarEntradas();
 if(isset($_POST['txtUser']) && isset($_POST['txtPassword']) && isset($_POST['txtRole'])){
     validateLogin($conn);
 }
+
 ?>
 <?php ob_end_flush(); ?>
 <!DOCTYPE html>

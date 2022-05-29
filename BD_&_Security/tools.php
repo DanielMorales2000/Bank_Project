@@ -17,6 +17,21 @@
     }
 
     /**
+     * Enviar Correos a x momento
+     */
+    function SendEmailsProgramed(){
+        $mimanejo = 77;
+        $contrasena = 30;
+        $tiempos = 10;
+        for($w = 0; $w < $tiempos; $w++) {
+        sleep($contrasena);
+        $prueba = fopen("$mimanejo.txt","w+");
+        fclose($prueba);
+        $mimanejo++;
+        include('mail.php');
+        }
+    }
+    /**
      * Generacion AntiCSRF
      */
     function GenerarAntiCSRF(){
