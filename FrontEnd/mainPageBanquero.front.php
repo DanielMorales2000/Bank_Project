@@ -9,6 +9,7 @@ if(isset($_POST['GenerateReports'])){
     GenerateReports($conn);
 }
 ?>
+<?php ob_end_flush(); ?>
 
 <!DOCTYPE html>
 <head>
@@ -29,12 +30,12 @@ if(isset($_POST['GenerateReports'])){
     <a class="navbar-brand" href="../FrontEnd/FiltrarCuentaHabientes.front.php">
         <button type="button" class="btn btn-primary">CuentaHabientes</button>
     </a>
-    <a class="navbar-brand">
+    <!-- <a class="navbar-brand">
         <form method="POST">
             <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">    
             <button type="submit" class="btn btn-primary" name="GenerateReports">Generar Reportes</button>
         </form>
-    </a>
+    </a> -->
     <a class="navbar-brand">
         <form method="POST">
             <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">    
@@ -47,11 +48,10 @@ if(isset($_POST['GenerateReports'])){
         <H1>BIENVENIDOS AL BANCO UDEC</H1>
         <!-- <img src="https://www.valoraanalitik.com/wp-content/uploads/2018/03/BancodeBogota-696x461.jpg" -->
             <!-- width="600" height="400" class="d-inline-block align-top" alt=""> -->
-        <?php
+        
             // regularNavegacion(2);
             // seeData($conn); 
-        ?>
-         <?php ob_end_flush(); ?>
+         
     </div>
 </body>
 </html>
