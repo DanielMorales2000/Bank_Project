@@ -1,6 +1,8 @@
 <?php ob_start();?>
 <?php 
 // session_start();
+
+include('../conexion.php');
 include('../BD_&_Security/tools.php');
 LimpiarEntradas();
 IniciarSesionSegura();
@@ -22,7 +24,7 @@ function seeData($conn){
     echo "<b>SEDE:  </b>".$filas[3]."<br>";
     echo "<b>TELEFONO:  </b>".$filas[4]."<br>";
     echo "<b>GERENTE:  </b>".$filas[5]."<br>";
-    $_SESSION["id_sucursal"] = $filas[6];
+    // $_SESSION["id_sucursal"] = $filas[6];
   }
 }
 
