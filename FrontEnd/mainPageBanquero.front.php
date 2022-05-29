@@ -9,6 +9,7 @@ if(isset($_POST['GenerateReports'])){
     GenerateReports($conn);
 }
 ?>
+<?php ob_end_flush(); ?>
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -50,7 +51,7 @@ if(isset($_POST['GenerateReports'])){
             regularNavegacion(2);
             seeData($conn); 
         ?>
-         <?php ob_end_flush(); ?>
+         
     </div>
 </body>
 </html>
