@@ -1,14 +1,14 @@
 <?php ob_start();?>
 <?php
-include('./createPDF.php');
+// include('./createPDF.php');
 include('../BackEnd/mainPage.back.php');
 // regularNavegacion(2);
 if(isset($_POST['CloseSession'])){
     closeSession();
 }
-if(isset($_POST['GenerateReports'])){
-    GenerateReports($conn);
-}
+// if(isset($_POST['GenerateReports'])){
+//     GenerateReports($conn);
+// }
 ?>
 <?php ob_end_flush(); ?>
 
