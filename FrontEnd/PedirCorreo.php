@@ -1,7 +1,18 @@
+<?php ob_start();?>
+<?php
+include('../conexion.php');
+
+include('../FrontEnd/CorreoRestClave.php');
+if(isset($_POST['enviar']) && isset($_POST["correoRestClave"])){
+    $correo = $_POST["correoRestClave"];
+    echo $correo;
+    CorreoRestablecimiento($correo);
+} 
+?>
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Envio Correo</title>
+      <title>Restablecimiento Contraseña</title>
       <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>login</title>
@@ -11,26 +22,23 @@
    <body>
       <div class="wrap">
          <header>
-            Enviar mail desde localhost con PHP Mailer
+            <h3><b>RESTABLECIMIENTO DE CONTRASEÑA</b></h3>
          </header>
          <section id="principal">
-            <form id="formulario" method="post" action="EnviarCorreo.php" enctype="multipart/form-data">
-               <div class="campos">
-                  <label>Para:</label>
-                  <input type="email" name="email" required>
-               </div>
-               <div class="campos">
-                  <label>Asunto:</label>
-                  <input type="text" name="asunto">
-               </div>
+            <form id="formulario" method="post" action="#">
                <!-- <div class="campos">
-                  <label>Mensaje:</label>
-                  <textarea name="mensaje"></textarea>
+                  <label>Cedula:</label>
+                  <input type="text" name="cedula" required> <br><br>
                </div> -->
+               <div class="campos">
+                  <label>Correo:</label>
+                  <input type="email" name="correoRestClave"><br><br>
+               </div>
                <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">
-               <input id="submit" type="submit" name="enviar" value="Enviar mail">
+               <input id="submit" type="submit" name="enviar" value="Enviar Correo">
             </form>
          </section>
       </div>
    </body>
 </html>
+<?php ob_end_flush(); ?>

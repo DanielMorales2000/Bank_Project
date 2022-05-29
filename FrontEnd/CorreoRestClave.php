@@ -11,13 +11,12 @@ require '..\vendor\phpmailer\phpmailer\src\SMTP.php';
 
 require '..\vendor\autoload.php';
 //Create an instance; passing `true` enables exceptions
+function CorreoRestablecimiento($email){
 
-
-function sendEmail($mpdf,$email){
     $mail = new PHPMailer(TRUE);
     try {
+        
         //Recibir todos los parámetros del formulario
-        $emailAttachment = $mpdf->Output('','S');
         //Server settings
         $mail->SMTPDebug = 0;                      //Enable verbose debug output
         $mail->isSMTP();                                            //Send using SMTP
@@ -34,9 +33,10 @@ function sendEmail($mpdf,$email){
         $mail->setFrom('danielsuarez8910@outlook.com', 'Daniel');
         //Content
         $mail->AddAddress($email); 
-        $mail->Subject = 'Extracto Bancario';
-        $mail->Body    = 'Buenas Tardes Usuario, Adjunto Encontraras un PDF con tu Extracto Bancario';
-        $mail->AddStringAttachment($emailAttachment, 'file.pdf', 'base64', 'application/pdf');
+        $mail->Subject = 'Restablecimiento de Contraseña';
+        $mail->IsHTML(true);
+        $mail->Body = file_get_contents('contenido.html');
+        $mail->MsgHTML(file_get_contents('contenido.html'));
         $mail->send();
         echo'<script type="text/javascript">
                 alert("Enviado Correctamente");
@@ -47,4 +47,3 @@ function sendEmail($mpdf,$email){
     }
 }
 ?>
-

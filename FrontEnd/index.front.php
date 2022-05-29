@@ -33,5 +33,8 @@ if(isset($_POST['txtUser']) && isset($_POST['txtPassword']) && isset($_POST['txt
 
         <input type="submit" value="Ingresar">
    </form> 
+   <a class="navbar-brand" href="..\FrontEnd\PedirCorreo.php">
+        <button type="button" class="btn btn-primary">Restablecer Contraseña</button>
+    </a>
 </body>
 </html>
