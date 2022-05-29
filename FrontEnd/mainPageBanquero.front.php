@@ -49,8 +49,6 @@ if(isset($_POST['CloseSession'])){
         <!-- <img src="https://www.valoraanalitik.com/wp-content/uploads/2018/03/BancodeBogota-696x461.jpg" -->
             <!-- width="600" height="400" class="d-inline-block align-top" alt=""> -->
         
-            // regularNavegacion(2);
-            // seeData($conn); 
          
     </div>
 </body>
