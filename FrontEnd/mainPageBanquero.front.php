@@ -2,6 +2,7 @@
 <?php
 include('./createPDF.php');
 include('../BackEnd/mainPage.back.php');
+regularNavegacion(2);
 if(isset($_POST['CloseSession'])){
     closeSession();
 }
@@ -9,7 +10,7 @@ if(isset($_POST['GenerateReports'])){
     GenerateReports($conn);
 }
 ?>
-<?php ob_end_flush(); ?>
+
 
 <!DOCTYPE html>
 <head>
@@ -49,9 +50,9 @@ if(isset($_POST['GenerateReports'])){
         <!-- <img src="https://www.valoraanalitik.com/wp-content/uploads/2018/03/BancodeBogota-696x461.jpg" -->
             <!-- width="600" height="400" class="d-inline-block align-top" alt=""> -->
             <?php
-            regularNavegacion(2);
-            seeData($conn);
+                seeData($conn);
             ?>
+            <?php ob_end_flush(); ?>
     </div>
 </body>
 </html>
