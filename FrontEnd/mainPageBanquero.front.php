@@ -1,9 +1,7 @@
 <?php ob_start();?>
 <?php
-include('../conexion.php');
 include('./createPDF.php');
 include('../BackEnd/mainPage.back.php');
-MostrarErrores();
 if(isset($_POST['CloseSession'])){
     closeSession();
 }
@@ -50,25 +48,7 @@ if(isset($_POST['GenerateReports'])){
             <!-- width="600" height="400" class="d-inline-block align-top" alt=""> -->
         <?php
             regularNavegacion(2);
-            // seeData($conn); 
-
-            $documento = $_SESSION["documento"];
-
-            $consulta= "EXEC [dbo].[PA_BANCO]
-                @DOCUMENTO = N'$documento'";
-          
-            $resultado=sqlsrv_query($conn, $consulta);
-            $filas=sqlsrv_fetch_array($resultado);
-
-            if($filas){
-                echo "<b>BANCO:  </b>".$filas[0]."<br>";
-                echo "<b>NIT:  </b>".$filas[1]."<br>";
-                echo "<b>CIUDAD:  </b>".$filas[2]."<br>";
-                echo "<b>SEDE:  </b>".$filas[3]."<br>";
-                echo "<b>TELEFONO:  </b>".$filas[4]."<br>";
-                echo "<b>GERENTE:  </b>".$filas[5]."<br>";
-                $_SESSION["id_sucursal"] = $filas[6];
-              }
+            seeData($conn); 
         ?>
          <?php ob_end_flush(); ?>
     </div>
