@@ -32,7 +32,7 @@ if(isset($_POST['CloseSession'])){
     </a>
     <!-- <a class="navbar-brand">
         <form method="POST">
-            <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">    
+            <input type="hidden" name="anticsrf" value="">    
             <button type="submit" class="btn btn-primary" name="GenerateReports">Generar Reportes</button>
         </form>
     </a> -->
