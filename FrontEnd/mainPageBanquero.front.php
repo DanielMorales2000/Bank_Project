@@ -1,13 +1,13 @@
 <?php ob_start();?>
 <?php
-// include('./createPDF.php');
+include('./createPDF.php');
 include('../BackEnd/mainPage.back.php');
 if(isset($_POST['CloseSession'])){
     closeSession();
 }
-// if(isset($_POST['GenerateReports'])){
-//     GenerateReports($conn);
-// }
+if(isset($_POST['GenerateReports'])){
+    GenerateReports($conn);
+}
 ?>
 <?php ob_end_flush(); ?>
 
@@ -30,12 +30,12 @@ if(isset($_POST['CloseSession'])){
     <a class="navbar-brand" href="../FrontEnd/FiltrarCuentaHabientes.front.php">
         <button type="button" class="btn btn-primary">CuentaHabientes</button>
     </a>
-    <!-- <a class="navbar-brand">
-        <form method="POST">
-            <input type="hidden" name="anticsrf" value="">    
+    <a class="navbar-brand">
+        <form method="POST">  
+            <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">    
             <button type="submit" class="btn btn-primary" name="GenerateReports">Generar Reportes</button>
         </form>
-    </a> -->
+    </a>
     <a class="navbar-brand">
         <form method="POST">
             <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">    
