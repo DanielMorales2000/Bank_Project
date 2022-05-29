@@ -9,7 +9,7 @@ IniciarSesionSegura();
 GenerarAntiCSRF();
 
 function seeData($conn){
-  $documento = 1005228835;
+  $documento = $_SESSION["documento"];
 
   $consulta= "EXEC [dbo].[PA_BANCO]
       @DOCUMENTO = N'$documento'";
@@ -24,7 +24,7 @@ function seeData($conn){
     echo "<b>SEDE:  </b>".$filas[3]."<br>";
     echo "<b>TELEFONO:  </b>".$filas[4]."<br>";
     echo "<b>GERENTE:  </b>".$filas[5]."<br>";
-    // $_SESSION["id_sucursal"] = $filas[6];
+    $_SESSION["id_sucursal"] = $filas[6];
   }
 }
 
