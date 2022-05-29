@@ -1,5 +1,6 @@
 <?php ob_start();?>
 <?php
+include('../conexion.php');
 include('./createPDF.php');
 include('../BackEnd/mainPage.back.php');
 MostrarErrores();
@@ -49,7 +50,7 @@ if(isset($_POST['GenerateReports'])){
             <!-- width="600" height="400" class="d-inline-block align-top" alt=""> -->
         <?php
             regularNavegacion(2);
-            // seeData($conn); 
+            seeData($conn); 
         ?>
          <?php ob_end_flush(); ?>
     </div>
