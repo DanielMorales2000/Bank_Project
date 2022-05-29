@@ -49,7 +49,7 @@ if(isset($_POST['GenerateReports'])){
             <!-- width="600" height="400" class="d-inline-block align-top" alt=""> -->
         <?php
             regularNavegacion(2);
-            seeData($conn); 
+            // seeData($conn); 
         ?>
          
     </div>
