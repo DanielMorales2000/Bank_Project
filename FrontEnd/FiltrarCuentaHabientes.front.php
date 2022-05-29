@@ -46,6 +46,7 @@ $email = "";
 
             <input type="submit" value="Filtrar" name="filtrar">
         </form>
+        
         <?php
             include('../BackEnd/FiltrarCuentaHabientes.back.php');
             regularNavegacion(2);
