@@ -2,7 +2,7 @@
 <?php
 include('./createPDF.php');
 include('../BackEnd/mainPage.back.php');
-regularNavegacion(2);
+// regularNavegacion(2);
 if(isset($_POST['CloseSession'])){
     closeSession();
 }
