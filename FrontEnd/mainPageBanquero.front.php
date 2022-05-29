@@ -1,6 +1,6 @@
 <?php ob_start();?>
 <?php
-// include('./createPDF.php');
+include('./createPDF.php');
 include('../BackEnd/mainPage.back.php');
 MostrarErrores();
 if(isset($_POST['CloseSession'])){
@@ -29,12 +29,12 @@ if(isset($_POST['GenerateReports'])){
     <a class="navbar-brand" href="../FrontEnd/FiltrarCuentaHabientes.front.php">
         <button type="button" class="btn btn-primary">CuentaHabientes</button>
     </a>
-    <!-- <a class="navbar-brand">
+    <a class="navbar-brand">
         <form method="POST">
             <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">    
             <button type="submit" class="btn btn-primary" name="GenerateReports">Generar Reportes</button>
         </form>
-    </a> -->
+    </a>
     <a class="navbar-brand">
         <form method="POST">
             <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">    
@@ -49,7 +49,7 @@ if(isset($_POST['GenerateReports'])){
             <!-- width="600" height="400" class="d-inline-block align-top" alt=""> -->
         <?php
             regularNavegacion(2);
-            seeData($conn); 
+            // seeData($conn); 
         ?>
          <?php ob_end_flush(); ?>
     </div>
