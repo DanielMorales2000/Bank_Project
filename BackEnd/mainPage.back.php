@@ -1,10 +1,8 @@
 <?php ob_start();?>
 <?php 
-
-include('../conexion.php');
 include('../BD_&_Security/tools.php');
-LimpiarEntradas();
 IniciarSesionSegura();
+include('../conexion.php');
 GenerarAntiCSRF();
 
 function seeData($conn){
