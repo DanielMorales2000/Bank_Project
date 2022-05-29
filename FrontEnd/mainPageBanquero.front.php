@@ -34,7 +34,6 @@ if(isset($_POST['GenerateReports'])){
     </a>
     <a class="navbar-brand">
         <form method="POST">  
-            <input type="hidden" name="anticsrf" value="<?php echo $_SESSION['anticsrf'];?>">    
             <button type="submit" class="btn btn-primary" name="GenerateReports">Generar Reportes</button>
         </form>
     </a>
