@@ -83,12 +83,12 @@ function mostrarCuentaHabiente($conn,$doc,$name,$lname,$email){
     $resultado=sqlsrv_query($conn, $consulta);
 
     echo'
+    <div>
     <div style="margin-left:20px" align = "left">
     <b>Documento:</b> '.$doc.'<br>
     <b>Nombre:</b> '.$name.'<br>
     <b>Apellido:</b> '.$lname.'<br>
     <b>Correo:</b> '.$email.'<br>
-    </div>
     <table class="table table-bordered">
     <thead>
     <tr align="center">
@@ -114,7 +114,7 @@ function mostrarCuentaHabiente($conn,$doc,$name,$lname,$email){
         <td>'. $SEDE .'</td>
         </tr>';
     }
-    echo'</tbody>';
+    echo'</tbody></div></div>';
 }
 ?>
 <?php ob_end_flush(); ?>

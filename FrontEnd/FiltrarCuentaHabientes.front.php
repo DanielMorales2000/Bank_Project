@@ -1,18 +1,11 @@
 <?php ob_start();?>
- <?php 
- include('../BackEnd/FiltrarCuentaHabientes.back.php');
- regularNavegacion(2);
- if(isset($_POST['CloseSession'])){
-    closeSession();
- }
-
- LimpiarEntradas();        
-
- $name = "";
- $lastname = "";
- $document = "";
- $email = "";
- ?>
+<?php 
+    
+$name = "";
+$lastname = "";
+$document = "";
+$email = "";
+?>
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -54,7 +47,15 @@
             <input type="submit" value="Filtrar" name="filtrar">
         </form>
         <?php
+            include('../BackEnd/FiltrarCuentaHabientes.back.php');
+            regularNavegacion(2);
+            if(isset($_POST['CloseSession'])){
+            closeSession();
+            }
             
+            //  regularNavegacion(2);
+            LimpiarEntradas();  
+
             if(isset($_POST['filtrar'])
             ){
                 if(isset($_POST['name'])){
