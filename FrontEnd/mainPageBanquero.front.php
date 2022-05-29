@@ -48,8 +48,9 @@ if(isset($_POST['GenerateReports'])){
         <H1>BIENVENIDOS AL BANCO UDEC</H1>
         <!-- <img src="https://www.valoraanalitik.com/wp-content/uploads/2018/03/BancodeBogota-696x461.jpg" -->
             <!-- width="600" height="400" class="d-inline-block align-top" alt=""> -->
-        
-         
+            <?php
+            seeData($conn);
+            ?>
     </div>
 </body>
 </html>
