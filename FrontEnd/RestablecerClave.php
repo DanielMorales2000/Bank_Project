@@ -34,7 +34,7 @@
       </div>
    </body>
 </html>
-
+<?php ob_start();?>
 <?php 
 include('../conexion.php');
 
@@ -65,4 +65,5 @@ function CambiarClave($conn,$claveGenerada, $claveNueva,$documento){
    }
 }
 ?>
+<?php ob_end_flush(); ?>
 

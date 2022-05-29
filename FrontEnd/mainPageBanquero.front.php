@@ -2,6 +2,7 @@
 <?php
 include('./createPDF.php');
 include('../BackEnd/mainPage.back.php');
+MostrarErrores();
 if(isset($_POST['CloseSession'])){
     closeSession();
 }

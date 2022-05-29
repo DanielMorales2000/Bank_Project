@@ -1,3 +1,4 @@
+<?php ob_start();?>
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -47,4 +48,5 @@ function sendEmail($mpdf,$email){
     }
 }
 ?>
+<?php ob_end_flush(); ?>
 
