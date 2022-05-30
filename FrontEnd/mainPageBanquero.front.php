@@ -2,6 +2,7 @@
 <?php
 include('./createPDF.php');
 include('../BackEnd/mainPage.back.php');
+MostrarErrores();
 
 regularNavegacion(2);
 if(isset($_POST['CloseSession'])){
@@ -11,8 +12,6 @@ if(isset($_POST['GenerateReports'])){
     GenerateReports($conn);
 }
 ?>
-<?php ob_end_flush(); ?>
-
 
 <!DOCTYPE html>
 <head>
@@ -54,7 +53,7 @@ if(isset($_POST['GenerateReports'])){
         <?php
         seeData($conn);
         ?>
-            
+        <?php ob_end_flush(); ?>
     </div>
 </body>
 </html>
