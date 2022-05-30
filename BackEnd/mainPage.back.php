@@ -8,7 +8,7 @@ GenerarAntiCSRF();
 
 function seeData($conn){
   $documento = $_SESSION["documento"];
-  echo "Documento";
+  echo "Documentoo";
   echo var_dump($documento);
   echo "Conexion";
   echo var_dump($conn);
