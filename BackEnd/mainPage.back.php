@@ -8,6 +8,10 @@ GenerarAntiCSRF();
 
 function seeData($conn){
   $documento = $_SESSION["documento"];
+  echo "Documento";
+  echo var_dump($documento);
+  echo "Conexion";
+  echo var_dump($conn);
 
   $consulta= "EXEC [dbo].[PA_BANCO]
       @DOCUMENTO = N'$documento'";
